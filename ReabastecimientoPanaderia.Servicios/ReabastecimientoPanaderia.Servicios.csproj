@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ReabastecimientoPanaderia.Server\ReabastecimientoPanaderia.Server.csproj" />
+    <ProjectReference Include="..\ReabastecimientoPanaderia.Shared\ReabastecimientoPanaderia.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

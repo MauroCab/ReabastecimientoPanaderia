@@ -1,4 +1,8 @@
 <Solution>
+  <Project Path="ReabastecimientoPanaderia.Client/ReabastecimientoPanaderia.Client.csproj" Id="017a48d0-7acc-4bc4-ae1f-dbdfd555a48d" />
   <Project Path="ReabastecimientoPanaderia.DB/ReabastecimientoPanaderia.DB.csproj" />
+  <Project Path="ReabastecimientoPanaderia.Repositorio/ReabastecimientoPanaderia.Repositorio.csproj" Id="33105c3d-8df3-4d57-b6dc-adb024770eb2" />
   <Project Path="ReabastecimientoPanaderia.Server/ReabastecimientoPanaderia.Server.csproj" />
+  <Project Path="ReabastecimientoPanaderia.Servicios/ReabastecimientoPanaderia.Servicios.csproj" Id="684e3265-67d6-433d-8bf8-bf77e034056a" />
+  <Project Path="ReabastecimientoPanaderia.Shared/ReabastecimientoPanaderia.Shared.csproj" Id="ca8bdb1f-5e0f-4c8a-b571-6f80d10a3a13" />
 </Solution>

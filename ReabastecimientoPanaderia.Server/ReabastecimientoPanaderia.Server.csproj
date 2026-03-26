@@ -10,4 +10,9 @@
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ReabastecimientoPanaderia.Repositorio\ReabastecimientoPanaderia.Repositorio.csproj" />
+    <ProjectReference Include="..\ReabastecimientoPanaderia.Shared\ReabastecimientoPanaderia.Shared.csproj" />
+  </ItemGroup>
+
 </Project>
