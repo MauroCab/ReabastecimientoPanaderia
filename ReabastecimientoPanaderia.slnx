@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="ReabastecimientoPanaderia.DB/ReabastecimientoPanaderia.DB.csproj" />
+  <Project Path="ReabastecimientoPanaderia.Server/ReabastecimientoPanaderia.Server.csproj" />
+</Solution>
