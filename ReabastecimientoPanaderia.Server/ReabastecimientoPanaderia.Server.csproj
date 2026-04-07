@@ -12,11 +12,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ReabastecimientoPanaderia.DB\ReabastecimientoPanaderia.DB.csproj" />
     <ProjectReference Include="..\ReabastecimientoPanaderia.Repositorio\ReabastecimientoPanaderia.Repositorio.csproj" />
-    <ProjectReference Include="..\ReabastecimientoPanaderia.Shared\ReabastecimientoPanaderia.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Controllers\" />
     <Folder Include="Controllers\" />
   </ItemGroup>
 

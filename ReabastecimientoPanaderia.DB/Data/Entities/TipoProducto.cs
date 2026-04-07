@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ReabastecimientoPanaderia.DB.Data.Entities
 {
-    internal class TipoProducto : EntityBase
+    public class TipoProducto : EntityBase
     {
         /// <summary>
         /// Código de 3 caracteres que abrevia el nombre del tipo de producto

@@ -7,7 +7,7 @@ namespace ReabastecimientoPanaderia.DB.Data.Entities
     /// <summary>
     /// Esta clase representa un renglón dentro de un pedido. Cada renglón hace referencia a un producto específico que se desea reabastecer, junto con la cantidad solicitada de ese producto.
     /// </summary>
-    internal class Renglon : EntityBase
+    public class Renglon : EntityBase
     {
         /// <summary>
         /// Hace referencia a un producto solicitado en el pedido. Es decir, el producto que se desea reabastecer.

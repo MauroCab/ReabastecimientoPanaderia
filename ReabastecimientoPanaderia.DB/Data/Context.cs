@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ReabastecimientoPanaderia.DB.Data
 {
-    internal class Context : DbContext
+    public class Context : DbContext
     {
         public Context(DbContextOptions<Context> options) : base(options) { }
 

@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ReabastecimientoPanaderia.Server\ReabastecimientoPanaderia.Server.csproj" />
-    <ProjectReference Include="..\ReabastecimientoPanaderia.Shared\ReabastecimientoPanaderia.Shared.csproj" />
   </ItemGroup>
 
 </Project>

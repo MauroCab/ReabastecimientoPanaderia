@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ReabastecimientoPanaderia.DB.Data.Entities
 {
-    internal class Producto : EntityBase
+    public class Producto : EntityBase
     {
         /// <summary>
         /// Nombre del producto, por ejemplo: "Pan de Molde", "Croissant", etc.
