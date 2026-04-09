@@ -10,13 +10,15 @@ namespace ReabastecimientoPanaderia.DB.Data.Entities
         /// <summary>
         /// Código de 3 caracteres que abrevia el nombre del tipo de producto
         /// </summary>
-        [MaxLength(3)]
+        [Required(ErrorMessage = "El código del producto es obligatorio")]
+        [MaxLength(3, ErrorMessage = "La cantidad maxima de letras es 3")]
         public required string Codigo { get; set; }
 
         /// <summary>
         /// Nombre del tipo de producto, por ejemplo: "Panadería", "Pastelería", etc.
         /// </summary>
-        [MaxLength(50)]
+        [Required(ErrorMessage = "El nombre del tipo producto es obligatorio")]
+        [MaxLength(50, ErrorMessage = "La cantidad maxima de letras es 3")]
         public required string Nombre { get; set; }
 
         /// <summary>

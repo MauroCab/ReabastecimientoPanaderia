@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace ReabastecimientoPanaderia.DB.Data.Entities
@@ -12,17 +13,20 @@ namespace ReabastecimientoPanaderia.DB.Data.Entities
         /// <summary>
         /// Hace referencia a un producto solicitado en el pedido. Es decir, el producto que se desea reabastecer.
         /// </summary>
+        [Required(ErrorMessage = "El id del producto solicitado es obligatorio")]
         public int ProductoSolicitadoID { get; set; }
         public required Producto ProductoSolicitado { get; set; }
 
         /// <summary>
         /// Cantidad solicitada del producto en cuestión. Por ejemplo, si se desea reabastecer 10 unidades de "Pan de Molde", entonces este valor sería 10.
         /// </summary>
+        [Required(ErrorMessage = "La cantidad del producto es obligatoria")]
         public int CantidadSolicitada { get; set; }
 
         /// <summary>
         /// Referencia al pedido al que pertenece este renglón.
         /// </summary>
+        [Required(ErrorMessage = "El id del pedido es obligatorio")]
         public int PedidoID { get; set; }
         public required Pedido Pedido { get; set; }
     }

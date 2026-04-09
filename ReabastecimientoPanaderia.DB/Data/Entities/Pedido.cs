@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace ReabastecimientoPanaderia.DB.Data.Entities
@@ -13,6 +14,7 @@ namespace ReabastecimientoPanaderia.DB.Data.Entities
         /// <summary>
         /// Dia y hora en que se realizó el pedido.
         /// </summary>
+        [Required(ErrorMessage = "La fecha y la hora son obligatorias")]
         public DateTime FechaYHora { get; set; }
 
         /// <summary>
