@@ -77,7 +77,7 @@ namespace ReabastecimientoPanaderia.DB.Data
                 entity.HasOne(r => r.ProductoSolicitado)
                 .WithMany()
                 .HasForeignKey(r => r.ProductoSolicitadoID)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.SetNull);
 
                 entity.Property(r => r.CantidadSolicitada)
                                 .IsRequired();
