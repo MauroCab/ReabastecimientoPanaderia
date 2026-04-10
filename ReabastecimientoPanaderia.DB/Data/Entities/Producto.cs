@@ -11,7 +11,7 @@ namespace ReabastecimientoPanaderia.DB.Data.Entities
         /// Nombre del producto, por ejemplo: "Pan de Molde", "Croissant", etc.
         /// </summary>
         [Required(ErrorMessage = "El nombre de producto es obligatorio")]
-        [MaxLength(100, ErrorMessage = "El nombre debe tener mas de 100 caracteres)")]
+        [MaxLength(100, ErrorMessage = "El nombre debe tener menos de 100 caracteres)")]
         public required string Nombre { get; set; }
 
         /// <summary>
