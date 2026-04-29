@@ -1,4 +1,6 @@
 <Solution>
   <Project Path="ReabastecimientoPanaderia.DB/ReabastecimientoPanaderia.DB.csproj" />
   <Project Path="ReabastecimientoPanaderia.Repositorio/ReabastecimientoPanaderia.Repositorio.csproj" Id="33105c3d-8df3-4d57-b6dc-adb024770eb2" />
+  <Project Path="ReabastecimientoPanaderia.Server/ReabastecimientoPanaderia.Server.Client/ReabastecimientoPanaderia.Server.Client.csproj" Id="0b93d77d-06d5-4f2f-b224-de2e0a56152d" />
+  <Project Path="ReabastecimientoPanaderia.Server/ReabastecimientoPanaderia.Server/ReabastecimientoPanaderia.Server.csproj" Id="394f7763-a3da-4e1a-ab29-a90251a1ea12" />
 </Solution>
