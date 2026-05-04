@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ReabastecimientoPanaderia.DB.Data
 {
-    public class EntityBase
+    public class EntityBase : IEntityBase
     {
         [Required]
         public int ID { get; set; }
