@@ -28,7 +28,7 @@ else
 }
 app.UseStatusCodePagesWithReExecute("/not-found", createScopeForStatusCodePages: true);
 app.UseHttpsRedirection();
-
+app.MapControllers();
 app.UseAntiforgery();
 
 app.MapStaticAssets();
