@@ -15,13 +15,6 @@ namespace ReabastecimientoPanaderia.Repositorio.Repositorio
         {
             this._context = context;
         }
-
-        public async Task<bool> Existe(int id)
-        {
-            bool existe = await _context.Set<E>().AnyAsync(x => x.ID == id);
-            return existe;
-        }
-
         public async Task<List<E>> Select()
         {
             return await _context.Set<E>().ToListAsync();
@@ -36,6 +29,12 @@ namespace ReabastecimientoPanaderia.Repositorio.Repositorio
             return sel;
         }
 
+        public async Task<bool> Existe(int id)
+        {
+            bool existe = await _context.Set<E>().AnyAsync(x => x.ID == id);
+            return existe;
+        }
+
         public async Task<int> Insert(E entidad)
         {
             try
@@ -47,32 +46,6 @@ namespace ReabastecimientoPanaderia.Repositorio.Repositorio
             catch (Exception err)
             {
                 throw err;
-            }
-        }
-
-        public async Task<bool> Update(int id, E entidad)
-        {
-            if (id != entidad.ID)
-            {
-                return false;
-            }
-
-            var sel = await SelectById(id);
-
-            if (sel == null)
-            {
-                return false;
-            }
-
-            try
-            {
-                _context.Set<E>().Update(entidad);
-                await _context.SaveChangesAsync();
-                return true;
-            }
-            catch (Exception e)
-            {
-                throw e;
             }
         }
 
