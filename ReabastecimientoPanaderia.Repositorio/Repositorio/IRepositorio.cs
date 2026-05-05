@@ -2,12 +2,12 @@
 
 namespace ReabastecimientoPanaderia.Repositorio.Repositorio
 {
-    public interface IRepositorio<E> where E : class, IEntityBase
+    public interface IRepositorio<Entidad> where Entidad : class, IEntityBase
     {
-        Task<List<E>> Select();
-        Task<E> SelectById(int id);
+        Task<List<Entidad>> Select();
+        Task<Entidad> SelectById(int id);
         Task<bool> Existe(int id);
-        Task<int> Insert(E entidad);
+        Task<int> Insert(Entidad entidad);
         Task<bool> Delete(int id);
 
     }

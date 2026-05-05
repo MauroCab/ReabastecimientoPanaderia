@@ -10,4 +10,8 @@
     <ProjectReference Include="..\ReabastecimientoPanaderia.DB\ReabastecimientoPanaderia.DB.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ProductoRepositorio\" />
+  </ItemGroup>
+
 </Project>
