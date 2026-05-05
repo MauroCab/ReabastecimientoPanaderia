@@ -8,7 +8,7 @@ using System.Text;
 
 namespace ReabastecimientoPanaderia.Repositorio.ProductoRepositorio
 {
-    public class ProductoRepositorio : Repositorio<Producto>
+    public class ProductoRepositorio : Repositorio<Producto>, IProductoRepositorio
     {
         private readonly Context _context;
 
