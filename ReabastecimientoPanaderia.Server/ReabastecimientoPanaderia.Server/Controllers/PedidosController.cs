@@ -47,6 +47,25 @@ namespace ReabastecimientoPanaderia.Server.Controllers
                 return BadRequest("El pedido debe contener al menos un renglón.");
             }
 
+            try
+            {
+                var nuevoPedido = new Pedido()
+                {
+                    FechaYHora = DateTime.Now
+                };
+
+                var nuevosRenglones = entidadDTO.Renglones.Select(r => new Renglon
+                {
+                    CantidadSolicitada = r.CantidadSolicitada,
+                    ProductoSolicitadoID = r.ProductoSolicitado.ID,
+                    NombreProducto = r.ProductoSolicitado.Nombre
+                }).ToList();
+
+                var pedidoCreado = await _repositorio.AddPedidoConRenglones(nuevoPedido, nuevosRenglones);
+            }
+            catch
+            {
+            }
             return 5;
         }
 

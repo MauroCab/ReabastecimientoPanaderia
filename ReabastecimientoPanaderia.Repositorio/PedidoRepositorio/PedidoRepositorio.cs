@@ -27,11 +27,11 @@ namespace ReabastecimientoPanaderia.Repositorio.PedidoRepositorio
 
             return pedidos.Select(p => new GetPedidoDTO
             {
-                Fecha = p.FechaYHora,
+                FechaYHora = p.FechaYHora,
                 Renglones = p.Renglones.Select(r => new GetRenglonDTO
                 {
-                    Cantidad = r.CantidadSolicitada,
-                    ProductoNombre = r.ProductoSolicitado?.Nombre // Aquí se obtiene el nombre del producto
+                    CantidadSolicitada = r.CantidadSolicitada,
+                    NombreProductoSolicitado = r.ProductoSolicitado?.Nombre // Aquí se obtiene el nombre del producto
                 }).ToList()
             }).ToList();
         }
@@ -44,15 +44,15 @@ namespace ReabastecimientoPanaderia.Repositorio.PedidoRepositorio
                            .FirstOrDefaultAsync(p => p.ID == id);
 
             if (pedido == null)
-                return null;
+            return null;
 
             return new GetPedidoDTO
             {
-                Fecha = pedido.FechaYHora,
+                FechaYHora = pedido.FechaYHora,
                 Renglones = pedido.Renglones.Select(r => new GetRenglonDTO
                 {
-                    Cantidad = r.CantidadSolicitada,
-                    ProductoNombre = r.ProductoSolicitado?.Nombre
+                    CantidadSolicitada = r.CantidadSolicitada,
+                    NombreProductoSolicitado = r.ProductoSolicitado?.Nombre
                 }).ToList()
             };
         }
@@ -63,6 +63,8 @@ namespace ReabastecimientoPanaderia.Repositorio.PedidoRepositorio
             {
                 try
                 {
+
+
                     _context.Pedidos.Add(pedido);
                     await _context.SaveChangesAsync();
 

@@ -8,6 +8,5 @@ namespace ReabastecimientoPanaderia.Shared.CrearPedido_DTOs
     {
         public required int ID { get; set; }
         public required string Nombre { get; set; }
-        public bool EsComun { get; set; }
     }
 }

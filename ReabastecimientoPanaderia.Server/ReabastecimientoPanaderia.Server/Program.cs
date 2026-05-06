@@ -1,5 +1,10 @@
+using Microsoft.EntityFrameworkCore;
+using ReabastecimientoPanaderia.DB.Data;
+using ReabastecimientoPanaderia.Repositorio.PedidoRepositorio;
+using ReabastecimientoPanaderia.Repositorio.ProductoRepositorio;
 using ReabastecimientoPanaderia.Server.Client.Pages;
 using ReabastecimientoPanaderia.Server.Components;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,8 +13,17 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
 
+builder.Services.AddControllers().AddJsonOptions(
+    x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+builder.Services.AddControllersWithViews();
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddDbContext<Context>(op => op.UseSqlServer("name=conn"));
+
+builder.Services.AddScoped<IProductoRepositorio, ProductoRepositorio>();
+builder.Services.AddScoped<IPedidoRepositorio, PedidoRepositorio>();
 
 var app = builder.Build();
 

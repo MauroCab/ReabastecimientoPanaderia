@@ -35,6 +35,6 @@ namespace ReabastecimientoPanaderia.DB.Data.Entities
         /// </summary>
         [Required(ErrorMessage = "El id del pedido es obligatorio")]
         public int PedidoID { get; set; }
-        public required Pedido Pedido { get; set; }
+        public Pedido? Pedido { get; set; }
     }
 }
