@@ -6,7 +6,7 @@ namespace ReabastecimientoPanaderia.Shared.GetPedido_DTOs
 {
     public class GetPedidoDTO
     {
-        public DateTime Fecha { get; set; }
+        public DateTime FechaYHora { get; set; }
         public List<GetRenglonDTO> Renglones { get; set; }
     }
 }

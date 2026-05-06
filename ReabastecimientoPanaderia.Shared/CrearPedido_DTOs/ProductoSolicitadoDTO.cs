@@ -4,9 +4,9 @@ using System.Text;
 
 namespace ReabastecimientoPanaderia.Shared.CrearPedido_DTOs
 {
-    public class ProductoEnPedidoDTO
+    public class ProductoSolicitadoDTO
     {
-        public required int Id { get; set; }
+        public required int ID { get; set; }
         public required string Nombre { get; set; }
         public bool EsComun { get; set; }
     }

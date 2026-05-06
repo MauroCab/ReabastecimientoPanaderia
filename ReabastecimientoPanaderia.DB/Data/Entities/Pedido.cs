@@ -18,7 +18,9 @@ namespace ReabastecimientoPanaderia.DB.Data.Entities
         public DateTime FechaYHora { get; set; }
 
         /// <summary>
-        /// Lista de renglones que componen el pedido. Cada renglón representa un producto específico que se desea reabastecer, junto con la cantidad solicitada de ese producto.
+        /// Lista de renglones que componen el pedido. 
+        /// Cada renglón representa un producto específico que se desea reabastecer,
+        /// junto con la cantidad solicitada de ese producto.
         /// </summary>
         public List<Renglon> Renglones { get; set; } = new List<Renglon>();
     }

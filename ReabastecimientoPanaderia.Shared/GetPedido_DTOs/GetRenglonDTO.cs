@@ -6,7 +6,7 @@ namespace ReabastecimientoPanaderia.Shared.GetPedido_DTOs
 {
     public class GetRenglonDTO
     {
-        public int Cantidad { get; set; }
-        public string? ProductoNombre { get; set; }
+        public int CantidadSolicitada { get; set; }
+        public string? NombreProductoSolicitado { get; set; }
     }
 }

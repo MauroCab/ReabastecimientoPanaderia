@@ -12,6 +12,6 @@ namespace ReabastecimientoPanaderia.Shared.CrearProducto_DTOs
         public string? Nombre { get; set; }
 
         [Required(ErrorMessage = "El tipo de producto es obligatorio")]
-        public int TProductoId { get; set; }
+        public int TipoProductoID { get; set; }
     }
 }
