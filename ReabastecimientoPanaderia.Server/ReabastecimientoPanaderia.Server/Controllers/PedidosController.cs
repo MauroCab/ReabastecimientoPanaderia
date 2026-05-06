@@ -57,8 +57,7 @@ namespace ReabastecimientoPanaderia.Server.Controllers
                 var nuevosRenglones = entidadDTO.Renglones.Select(r => new Renglon
                 {
                     CantidadSolicitada = r.CantidadSolicitada,
-                    ProductoSolicitadoID = r.ProductoSolicitado.ID,
-                    NombreProducto = r.ProductoSolicitado.Nombre
+                    ProductoSolicitadoID = r.ProductoSolicitado.ID
                 }).ToList();
 
                 var pedidoCreado = await _repositorio.AddPedidoConRenglones(nuevoPedido, nuevosRenglones);

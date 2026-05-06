@@ -19,7 +19,7 @@ namespace ReabastecimientoPanaderia.DB.Data.Entities
         /// <summary>
         /// El nombre del producto solicitado
         /// </summary>
-        public required string NombreProducto { get; set; }
+        public string NombreProducto { get; set; }
         // Renglon guarda el nombre del producto para que en caso de
         // que el producto sea eliminado de la base de datos, se setee la clave foránea como NULL
         // pero se mantenga el nombre del producto en el pedido para conservar el historial
