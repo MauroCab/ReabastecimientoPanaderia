@@ -27,6 +27,6 @@ namespace ReabastecimientoPanaderia.DB.Data.Entities
         /// </summary>
         [Required(ErrorMessage = "El tipo de producto es obligatorio")]
         public int TipoProductoID { get; set; }
-        public required TipoProducto TipoProducto { get; set; }
+        public TipoProducto TipoProducto { get; set; }
     }
 }
