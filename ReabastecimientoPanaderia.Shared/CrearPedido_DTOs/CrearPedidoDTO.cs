@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ReabastecimientoPanaderia.Shared.CrearPedido_DTOs
 {
-    internal class CrearPedidoDTO
+    public class CrearPedidoDTO
     {
         public List<CrearRenglonDTO>? Renglones { get; set; }
     }

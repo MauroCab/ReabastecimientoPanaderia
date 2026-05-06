@@ -15,7 +15,7 @@ namespace ReabastecimientoPanaderia.Repositorio.PedidoRepositorio
 
         public PedidoRepositorio(Context context) : base(context)
         {
-            this.context = context;
+            this._context = context;
         }
 
         public async Task<List<GetPedidoDTO>> Get()
