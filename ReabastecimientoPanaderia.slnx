@@ -4,4 +4,5 @@
   <Project Path="ReabastecimientoPanaderia.Server/ReabastecimientoPanaderia.Server.Client/ReabastecimientoPanaderia.Server.Client.csproj" Id="0b93d77d-06d5-4f2f-b224-de2e0a56152d" />
   <Project Path="ReabastecimientoPanaderia.Server/ReabastecimientoPanaderia.Server/ReabastecimientoPanaderia.Server.csproj" Id="394f7763-a3da-4e1a-ab29-a90251a1ea12" />
   <Project Path="ReabastecimientoPanaderia.Shared/ReabastecimientoPanaderia.Shared.csproj" Id="46592975-a797-482f-b025-2441453e729f" />
+  <Project Path="ReabastecimientoPanadería.Services/ReabastecimientoPanadería.Services.csproj" Id="b2942788-f948-495b-8148-5aa3de78bedf" />
 </Solution>
