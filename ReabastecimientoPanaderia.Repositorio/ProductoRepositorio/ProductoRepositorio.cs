@@ -19,15 +19,13 @@ namespace ReabastecimientoPanaderia.Repositorio.ProductoRepositorio
         public async Task<List<Producto>> Get()
         {
             return await _context.Productos
-                .Include(p => p.TipoProducto.Nombre)
-                .Include(p => p.EsComun)
+                .Include(p => p.TipoProducto)
                 .ToListAsync();
         }
         public async Task<Producto?> GetById(int id)
         {
             return await _context.Productos
-                .Include(p => p.TipoProducto.Nombre)
-                .Include(p => p.EsComun)
+                .Include(p => p.TipoProducto)
                 .FirstOrDefaultAsync(p => p.ID == id);
         }
     }
