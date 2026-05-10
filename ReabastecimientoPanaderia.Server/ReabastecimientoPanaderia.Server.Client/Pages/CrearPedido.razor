@@ -1,0 +1,197 @@
+﻿@page "/crearPedido"
+@using ReabastecimientoPanaderia.DB.Data.Entities
+@using ReabastecimientoPanaderia.Services.UtilityServices
+@using ReabastecimientoPanaderia.Shared.CrearPedido_DTOs
+@using ReabastecimientoPanaderia.Services.HttpServices
+@inject PedidoService PedidoService
+@inject NavigationManager Navigation
+@inject IHttpServicio http
+<PageTitle>Crear Pedido</PageTitle>
+
+<section id="crearPedido">
+
+    <input type="text" name="searchCrear" id="searchbar">
+    <button type="button">Buscar</button>
+    <NavLink class="nav-link" href="VerPedido" id="link-ver-pedido">
+         <input type="button" class="custom-greenButton" id="verPedido" value="Ver Pedido Actual">
+    </NavLink>
+    <button type="button" @onclick="() => LeerListaProductos()"> Refrescar </button>
+    <h2>Productos Comunes</h2>
+    <div class="custom-productContainer" id="commonProducts">
+
+       @*  <article class="custom-product">
+            Producto
+            <input type="number" name="quantityValue" class="quantity" value="0" min="0" max="99">
+            <input type="checkbox" name="isCommonValue" class="isCommon">
+            <input type="button" class="custom-greenButton" value="Añadir al pedido" style="display: block;  margin-top: 5px;">
+        </article> *@
+
+        
+    </div>
+
+    <h2>Todos los productos</h2>
+    <div class="custom-productContainer" id="allProducts">
+
+        @if (Mensaje == "")
+        {
+            @if (listaProductos == null)
+            {
+                <p>Cargando...</p>
+            }
+            else if (listaProductos.Count == 0)
+            {
+                <p>No hay productos disponibles.</p>
+            }
+            else
+            {
+
+                @foreach (var producto in listaProductos)
+                {
+                    <article class="custom-product">
+
+                        <div class="product-header">
+
+                            <h3 class="product-title">@producto.Nombre</h3>
+                            <label class="favorite-toggle">
+                                <input type="checkbox" name="isCommonValue" class="isCommon">
+                                <span class="material-symbols-outlined star-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-star">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z" />
+                                    </svg>
+                                </span>
+                            </label>
+
+                        </div>
+
+                        <div class="product-actions">
+                            <div class="quantity-selector">
+                                <button class="quantity-btn minus-btn" @onclick="() => DecrementarCantidad(producto.ID)">
+                                    -
+                                </button>
+
+                                <input type="number"
+                                       name="quantityValue"
+                                       class="quantity-input"
+                                       @bind="cantidades[producto.ID]"
+                                       min="0"
+                                       max="99">
+
+                                <button class="quantity-btn plus-btn"
+                                        @onclick="() => IncrementarCantidad(producto.ID)">
+                                    +
+                                </button>
+                            </div>
+
+                            <button class="add-to-cart-btn"
+                                    @onclick="() => AgregarAlPedido(producto)">
+                                <span class="material-symbols-outlined cart-icon">+</span>
+                                Añadir al pedido
+                            </button>
+                        </div>
+
+
+                    </article>
+                }
+
+            }
+
+        }
+        else
+        {
+        <p> Error: @Mensaje</p>
+        }
+    </div>
+            
+</section>
+
+@code {
+    private List<ProductoSolicitadoDTO>? listaProductos;
+    private Dictionary<int, int> cantidades = new();
+
+    string Mensaje = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        await LeerListaProductos();
+
+        // Inicializar cantidades
+        if (listaProductos != null)
+        {
+            foreach (var producto in listaProductos)
+            {
+                cantidades[producto.ID] = 0; // O el valor inicial que quieras
+            }
+        }
+    }
+
+    private async Task LeerListaProductos()
+    {
+        var listaProductosBrutos = await http.Get<List<Producto>>("api/Productos");
+
+        if (!listaProductosBrutos.Error)
+        {
+            listaProductos = listaProductosBrutos.Respuesta.Select(p => new ProductoSolicitadoDTO
+            {
+                ID = p.ID,
+                Nombre = p.Nombre,
+            }).ToList();
+        }
+        else
+        {
+            Mensaje = listaProductosBrutos.ObtenerError();
+        }
+        
+    }
+  
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender && listaProductos != null)
+        {
+            // Inicializar cantidades después del primer render
+            foreach (var producto in listaProductos)
+            {
+                if (!cantidades.ContainsKey(producto.ID))
+                {
+                    cantidades[producto.ID] = 0;
+                }
+            }
+            StateHasChanged();
+        }
+    }
+    
+    
+    
+    // Método para manejar el botón +
+    private void IncrementarCantidad(int productoId)
+    {
+        if (cantidades.ContainsKey(productoId))
+        {
+            cantidades[productoId]++;
+        }
+    }
+    
+    // Método para manejar el botón -
+    private void DecrementarCantidad(int productoId)
+    {
+        if (cantidades.ContainsKey(productoId) && cantidades[productoId] > 0)
+        {
+            cantidades[productoId]--;
+        }
+    }
+    
+    // Método para el botón "Añadir al pedido"
+    private void AgregarAlPedido(ProductoSolicitadoDTO producto)
+    {
+        if (cantidades.ContainsKey(producto.ID) && cantidades[producto.ID] > 0)
+        {
+            PedidoService.AgregarAlPedido(producto, cantidades[producto.ID]);
+            // Opcional: Resetear la cantidad
+            cantidades[producto.ID] = 0;
+        }
+    }
+}
+
+
+
