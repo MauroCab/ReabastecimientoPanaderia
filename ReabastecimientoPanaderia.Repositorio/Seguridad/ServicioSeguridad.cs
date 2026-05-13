@@ -9,14 +9,14 @@ using ReabastecimientoPanaderia.Shared.ObjetosSeguridad;
 
 namespace ReabastecimientoPanaderia.Repositorio.Seguridad
 {
-    internal class SeguridadServicio
+    public class ServicioSeguridad
     {
         private readonly Context context;
         private readonly UserManager<ApplicationUser> userManager;
         private readonly IHttpContextAccessor contextAccesor;
         private readonly IAuthorizationService authorizationService;
 
-        public SeguridadServicio(Context context,
+        public ServicioSeguridad(Context context,
                                  UserManager<ApplicationUser> userManager,
                                  IHttpContextAccessor contextAccesor,
                                  IAuthorizationService authorizationService)
