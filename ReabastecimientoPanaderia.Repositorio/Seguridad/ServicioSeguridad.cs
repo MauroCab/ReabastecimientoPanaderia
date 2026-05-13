@@ -9,7 +9,7 @@ using ReabastecimientoPanaderia.Shared.ObjetosSeguridad;
 
 namespace ReabastecimientoPanaderia.Repositorio.Seguridad
 {
-    public class ServicioSeguridad
+    public class ServicioSeguridad : IServicioSeguridad
     {
         private readonly Context context;
         private readonly UserManager<ApplicationUser> userManager;
