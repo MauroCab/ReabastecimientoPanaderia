@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using ReabastecimientoPanaderia.DB.Data.Entities;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace ReabastecimientoPanaderia.DB.Data
 {
-    public class Context : DbContext
+    public class Context : IdentityDbContext<ApplicationUser>
     {
         public Context(DbContextOptions<Context> options) : base(options) { }
 
