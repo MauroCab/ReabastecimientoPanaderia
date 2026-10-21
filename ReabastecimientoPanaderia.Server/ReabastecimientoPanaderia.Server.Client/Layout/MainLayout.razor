@@ -1,4 +1,7 @@
 ﻿@inherits LayoutComponentBase
+@using Microsoft.AspNetCore.Components.Authorization
+@using System.Security.Claims
+@inject AuthenticationStateProvider AuthenticationStateProvider
 
 <div class="page">
     <div class="sidebar">
@@ -7,7 +10,13 @@
 
     <main>
         <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+                <AuthorizeView>
+                    <Authorized Context="authState">
+                        <span class="usuario-email">
+                            @authState.User.Identity?.Name
+                        </span>
+                    </Authorized>
+                </AuthorizeView>
         </div>
 
         <article class="content px-4">
