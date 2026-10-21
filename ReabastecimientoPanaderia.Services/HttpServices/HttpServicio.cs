@@ -28,7 +28,7 @@ namespace ReabastecimientoPanaderia.Services.HttpServices
             }
         }
 
-        public async Task<HttpRespuesta<TResp>> Post<T, TResp>(string url, T entidad)
+        public async Task<HttpRespuesta<object>> Post<T>(string url, T entidad)
         {
             var JsonAEnviar = JsonSerializer.Serialize(entidad);
             var contenido = new StringContent(JsonAEnviar,
@@ -38,12 +38,12 @@ namespace ReabastecimientoPanaderia.Services.HttpServices
             var response = await http.PostAsync(url, contenido);
             if (response.IsSuccessStatusCode)
             {
-                var respuesta = await DesSerializar<TResp>(response);
-                return new HttpRespuesta<TResp>(respuesta, false, response);
+                var respuesta = await DesSerializar<object>(response);
+                return new HttpRespuesta<object>(respuesta, false, response);
             }
             else
             {
-                return new HttpRespuesta<TResp>(default, true, response);
+                return new HttpRespuesta<object>(default, true, response);
             }
 
         }

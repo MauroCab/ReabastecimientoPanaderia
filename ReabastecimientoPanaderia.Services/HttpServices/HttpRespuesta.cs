@@ -20,29 +20,28 @@ namespace ReabastecimientoPanaderia.Services.HttpServices
             HttpResponseMessage = httpResponseMessage;
         }
 
-        public string ObtenerError()
+        public async Task<string> ObtenerError()
         {
             if (!Error)
             {
-                return string.Empty;
+                return "";
             }
-            else
-            {
-                var statuscode = HttpResponseMessage.StatusCode;
 
-                switch (statuscode)
-                {
-                    case HttpStatusCode.NotFound:
-                        return "Recurso no encontrado.";
-                    case HttpStatusCode.Unauthorized:
-                        return "No está logueado.";
-                    case HttpStatusCode.Forbidden:
-                        return "No tiene autorización a ejecutar este proceso.";
-                    case HttpStatusCode.BadRequest:
-                        return "No se pudo procesar la información.";
-                    default:
-                        return $"Error en la llamada HTTP. Código de estado: {statuscode}";
-                }
+            var statuscode = HttpResponseMessage.StatusCode;
+
+            switch (statuscode)
+            {
+                case System.Net.HttpStatusCode.BadRequest:
+                    return HttpResponseMessage.Content.ReadAsStringAsync().ToString()!;
+                //                    return "Error, no se puede procesar la información";
+                case System.Net.HttpStatusCode.Unauthorized:
+                    return "Error, no está logueado";
+                case System.Net.HttpStatusCode.Forbidden:
+                    return "Error, no tiene autorización a ejecutar este proceso";
+                case System.Net.HttpStatusCode.NotFound:
+                    return "Error, dirección no encontrado";
+                default:
+                    return HttpResponseMessage.Content.ReadAsStringAsync().Result;
             }
         }
 

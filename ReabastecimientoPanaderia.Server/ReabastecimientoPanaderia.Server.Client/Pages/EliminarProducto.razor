@@ -1,7 +1,84 @@
 ﻿@page "/eliminarProducto"
+@using ReabastecimientoPanaderia.DB.Data.Entities
+@using ReabastecimientoPanaderia.Services.HttpServices
+@inject IHttpServicio http
 
-<h3>EliminarProducto</h3>
+<PageTitle>Eliminar Productos</PageTitle>
+
+<section id="eliminarProducto">
+    <h2>Eliminar Productos</h2>
+    <input type="text" name="search" id="searchbar">
+    <input type="button" value="Buscar">
+    <div class="custom-productContainer">
+        @if (Mensaje == "")
+        {
+            @if (listaProductos == null)
+            {
+                <p>Cargando...</p>
+            }
+            else if (listaProductos.Count == 0)
+            {
+                <p>No hay productos disponibles.</p>
+            }
+            else
+            {
+
+                @foreach (var producto in listaProductos)
+                {
+                    <article class="custom-delete-product">
+
+                        <div class="product-header">
+
+                          <h3 class="product-title">@producto.Nombre</h3>
+
+                        </div>
+
+                        <div class="product-actions">
+
+                          <button class="custom-deleteButton">
+                            Eliminar Producto
+                          </button>
+
+                        </div>
+
+                    </article>
+                }
+
+            }
+
+        }
+        else
+        {
+            <p> Error: @Mensaje</p>
+        }
+    
+    </div>
+
+</section>
 
 @code {
+    private List<Producto>? listaProductos;
 
+    string Mensaje = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        await LeerListaProductos();
+    }
+
+    private async Task LeerListaProductos()
+    {
+        var lp = await http.Get<List<Producto>>("api/Productos");
+
+        if (!lp.Error)
+        {
+            listaProductos = lp.Respuesta;
+        }
+        else
+        {
+            Mensaje = await lp.ObtenerError();
+        }
+
+    }
 }
