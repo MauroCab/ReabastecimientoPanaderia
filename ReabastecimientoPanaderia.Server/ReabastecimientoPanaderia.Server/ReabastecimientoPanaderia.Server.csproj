@@ -12,9 +12,10 @@
     <ProjectReference Include="..\..\ReabastecimientoPanaderia.Repositorio\ReabastecimientoPanaderia.Repositorio.csproj" />
     <ProjectReference Include="..\..\ReabastecimientoPanaderia.Shared\ReabastecimientoPanaderia.Shared.csproj" />
     <ProjectReference Include="..\ReabastecimientoPanaderia.Server.Client\ReabastecimientoPanaderia.Server.Client.csproj" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="10.0.5" />
-    <PackageReference Include="QuestPDF" Version="2026.5.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="10.0.13" />
+    <PackageReference Include="QuestPDF" Version="2026.9.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.3.0" />
+    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="10.0.13" />
   </ItemGroup>
 
   <ItemGroup>
